@@ -33,7 +33,7 @@ const Login = () => {
 
   return (
     <div className="w-full lg:grid lg:min-h-[100vh] lg:grid-cols-2 xl:min-h-[100vh]">
-      <div className="min-h-[100vh] flex items-center justify-center py-12">
+      <div className=" min-h-[100vh] flex items-center justify-center py-12">
         <div className="mx-auto grid w-[350px] gap-6">
           <div className="grid gap-2 text-center">
             <h1 className="text-3xl font-bold">Login</h1>
@@ -45,6 +45,7 @@ const Login = () => {
             <div className="grid gap-2">
               <Label htmlFor="email">Email</Label>
               <Input
+                id="email"
                 type="email"
                 placeholder="m@example.com"
                 value={email}
@@ -54,9 +55,9 @@ const Login = () => {
             </div>
             <div className="grid gap-2">
               <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
+                <Label>Password</Label>
                 <Link
-                  to={"/password/forgot"}
+                  to="/password/forgot"
                   className="ml-auto inline-block text-sm underline"
                 >
                   Forgot your password?
@@ -66,25 +67,23 @@ const Login = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
               />
             </div>
             {loading ? (
-              <SpecialLoadingButton content={"Logging In"} />
+              <SpecialLoadingButton content={"Loggin In"} />
             ) : (
-              <Button type="submit" className="w-full" onClick={handleLogin}>
+              <Button
+                onClick={() => handleLogin(email, password)}
+                className="w-full"
+              >
                 Login
               </Button>
             )}
           </div>
         </div>
       </div>
-      <div className="hidden bg-muted lg:block">
-        <img
-          src="/placeholder.svg"
-          alt="Image"
-          className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-        />
+      <div className="flex justify-center items-center bg-muted">
+        <img src="/login.png" alt="login" />
       </div>
     </div>
   );
