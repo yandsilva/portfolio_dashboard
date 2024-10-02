@@ -61,11 +61,13 @@ export const forgotPassword = (email) => async (dispatch) => {
       { email },
       { withCredentials: true, headers: { "Content-Type": "application/json" } }
     );
-    dispatch(forgotResetPassSlice.actions.forgotPasswordSuccess(data.messge));
+    dispatch(forgotResetPassSlice.actions.forgotPasswordSuccess(data.message));
     dispatch(forgotResetPassSlice.actions.clearAllErrors());
   } catch (error) {
-    forgotResetPassSlice.actions.forgotPasswordFailed(
-      error.response.data.message
+    dispatch(
+      forgotResetPassSlice.actions.forgotPasswordFailed(
+        error.response.data.message
+      )
     );
   }
 };
@@ -82,11 +84,13 @@ export const resetPassword =
           headers: { "Content-Type": "application/json" },
         }
       );
-      dispatch(forgotResetPassSlice.actions.resetPasswordSuccess(data.messge));
+      dispatch(forgotResetPassSlice.actions.resetPasswordSuccess(data.message));
       dispatch(forgotResetPassSlice.actions.clearAllErrors());
     } catch (error) {
-      forgotResetPassSlice.actions.resetPasswordFailed(
-        error.response.data.message
+      dispatch(
+        forgotResetPassSlice.actions.resetPasswordFailed(
+          error.response.data.message
+        )
       );
     }
   };

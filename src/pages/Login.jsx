@@ -57,7 +57,7 @@ const Login = () => {
               <div className="flex items-center">
                 <Label>Password</Label>
                 <Link
-                  to="/password/forgot"
+                  to={"/password/forgot"}
                   className="ml-auto inline-block text-sm underline"
                 >
                   Forgot your password?
