@@ -21,6 +21,7 @@ import {
   LogOut,
   MessageSquareMore,
   Package,
+  Package2,
   PanelLeft,
   PencilRuler,
   User,
@@ -30,9 +31,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Button } from "@/components/ui/button";
+import Dashboard from "./sub-components/Dashboard";
+import AddProject from "./sub-components/AddProject";
+import AddSkill from "./sub-components/AddSkill";
+import AddApplication from "./sub-components/AddApplication";
+import AddTimeline from "./sub-components/AddTimeline";
+import Messages from "./sub-components/Messages";
+import Account from "./sub-components/Account";
 
 const HomePage = () => {
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("Dashboard");
   const { isAuthenticated, error, user } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const handleLogout = () => {
@@ -57,7 +65,7 @@ const HomePage = () => {
         <aside className="fixed inset-y-0 left-0 hidden w-14 flex-col border-r bg-background sm:flex z-50">
           <nav className="flex flex-col items-center gap-4 px-2 sm:py-5">
             <Link className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full">
-              <Package className="h-4 w-4 transition-all group-hover:scale-110" />
+              <Package className="h-6 w-6 transition-all group-hover:scale-110" />
               <span className="sr-only">Dashboard</span>
             </Link>
             <TooltipProvider>
@@ -225,9 +233,8 @@ const HomePage = () => {
             </SheetTrigger>
             <SheetContent side="left" className="sm:max-w-xs">
               <nav className="grid gap-6 text-lg font-medium">
-                <Link className="group flex h-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base">
-                  <Package className="h-5 w-5 transition-all group-hover:scale-110" />
-                  <span>Dashboard</span>
+                <Link className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base">
+                  <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
                 </Link>
                 <Link
                   href="#"
@@ -342,6 +349,36 @@ const HomePage = () => {
             </h1>
           </div>
         </header>
+
+        {(() => {
+          switch (active) {
+            case "Dashboard":
+              return <Dashboard />;
+              break;
+            case "Add Project":
+              return <AddProject />;
+              break;
+            case "Add Skill":
+              return <AddSkill />;
+              break;
+            case "Add Application":
+              return <AddApplication />;
+              break;
+            case "Add Timeline":
+              return <AddTimeline />;
+              break;
+            case "Messages":
+              return <Messages />;
+              break;
+            case "Account":
+              return <Account />;
+              break;
+
+            default:
+              return <Dashboard />;
+              break;
+          }
+        })()}
       </div>
     </>
   );
