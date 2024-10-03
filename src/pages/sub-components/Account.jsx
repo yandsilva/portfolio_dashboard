@@ -22,6 +22,7 @@ const Account = () => {
                   ? "font-semibold text-primary"
                   : ""
               }
+              onClick={() => setSelectedComponent("Profile")}
             >
               Profile
             </Link>
@@ -32,6 +33,7 @@ const Account = () => {
                   ? "font-semibold text-primary"
                   : ""
               }
+              onClick={() => setSelectedComponent("Update Profile")}
             >
               Update Profile
             </Link>
@@ -42,6 +44,7 @@ const Account = () => {
                   ? "font-semibold text-primary"
                   : ""
               }
+              onClick={() => setSelectedComponent("Update Password")}
             >
               Update Password
             </Link>
