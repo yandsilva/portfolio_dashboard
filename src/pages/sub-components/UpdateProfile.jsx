@@ -217,7 +217,7 @@ const UpdateProfile = () => {
               />
             </div>
             <div className="grid gap-2">
-              <Label>Twitter URL</Label>
+              <Label>Twitter(X) URL</Label>
               <Input
                 placeholder="Your Twitter URL"
                 value={twitterURL}
